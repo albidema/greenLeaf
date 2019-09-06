@@ -43,7 +43,7 @@ namespace GreenLeafApp.API.Data
         public async Task<User> Register(User user, string password)
         {
             byte[] passwordHash, passwordsalt;
-            CreatePasswordHasg(password,out passwordHash, out passwordsalt);
+            CreatePasswordHash(password,out passwordHash, out passwordsalt);
 
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordsalt;
@@ -54,7 +54,7 @@ namespace GreenLeafApp.API.Data
             return user;
         }
 
-        private void CreatePasswordHasg(string password, out byte[] passwordHash, out byte[] passwordsalt)
+        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordsalt)
         {
             using(var hmac = new System.Security.Cryptography.HMACSHA512()) 
             {
